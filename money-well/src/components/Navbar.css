@@ -1,0 +1,18 @@
+nav 
+{
+  display: flex;
+  margin: 40px;
+
+}
+
+nav h1 {
+  flex-grow: 1;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+.btn-1 {
+  margin-left: 20px;
+}
