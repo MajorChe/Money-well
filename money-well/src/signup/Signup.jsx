@@ -1,31 +1,49 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AccountContext, AccountContextProvider, authReducer } from "../context/AccountContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 import { useSignup } from "../hooks/useSignup";
 import styles from "./Signup.module.css";
-
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [passError,setPassError] = useState(false)
+  const [passError, setPassError] = useState(false);
 
-  const {signup, error, isPending} = useSignup();
+  // To get the logged user object
+  // const {user} = useAuthContext(authReducer);
 
+  const { signup, error, isPending } = useSignup();
+  
   const handleSignup = (e) => {
     e.preventDefault();
-    if(password!== confirmPassword) {
-      setPassError(true)
+    if (password !== confirmPassword) {
+      setPassError(true);
     } else {
-      setPassError(false)
-      signup(email,password)
+      setPassError(false);
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      signup(email, password);
     }
   };
   return (
     <div className={styles.main}>
       <h1>Sign up</h1>
       <form className="login-form" onSubmit={handleSignup}>
-        {error && <p className={styles.error}>{error}<br/><br/></p>}
-        {passError && <p className={styles.error}>Passwords do not match <br/><br/></p>}
+        {error && (
+          <p className={styles.error}>
+            {error}
+            <br />
+            <br />
+          </p>
+        )}
+        {passError && (
+          <p className={styles.error}>
+            Passwords do not match <br />
+            <br />
+          </p>
+        )}
         <label>Email:</label>
         <input
           type={"email"}
@@ -49,7 +67,11 @@ const Signup = () => {
           required
         />
         {!isPending && <button className="btn btn-2">Signup</button>}
-        {isPending && <button className="btn btn-2" disabled>Loading</button>}
+        {isPending && (
+          <button className="btn btn-2" disabled>
+            Loading
+          </button>
+        )}
       </form>
     </div>
   );
