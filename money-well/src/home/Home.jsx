@@ -1,14 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useFireStore } from "../hooks/useFireStore";
 import styles from "./Home.module.css";
+import { useAuthContext } from "../hooks/useAuthContext";
+import moment from "moment";
 
 const Home = () => {
   const [name, setName] = useState("");
-  const [amount, setAmount] = useState(0);
-  const [date, setDate] = useState();
+  const [amount, setAmount] = useState("");
+  const [date, setDate] = useState("");
+  const { user } = useAuthContext();
+  const { addDocument, response } = useFireStore("transactions");
+
+  const current_date = moment(new Date()).format("YYYY-MM-DD");
+
+  useEffect(() => {
+    if (response.success) {
+      setName("");
+      setAmount("");
+      setDate("");
+      console.log("hello");
+    }
+  }, [response.success]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({
+    addDocument({
+      uid: user.uid,
       name,
       amount,
       date,
@@ -26,18 +43,22 @@ const Home = () => {
             <input
               type="text"
               onChange={(e) => setName(e.target.value)}
+              value={name}
               required
             />
             <label>Amount ($): </label>
             <input
               type="number"
               onChange={(e) => setAmount(e.target.value)}
+              value={amount}
               required
             />
             <label>Date: </label>
             <input
               type="date"
               onChange={(e) => setDate(e.target.value)}
+              max={current_date}
+              value={date}
               required
             />
             <button className="btn">Add to list</button>
