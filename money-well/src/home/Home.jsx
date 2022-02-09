@@ -4,7 +4,7 @@ import styles from "./Home.module.css";
 const Home = () => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
