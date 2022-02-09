@@ -1,3 +1,61 @@
-.main h1{
+.main{
   color: green;
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.leftContainer {
+  margin-top: 60px;
+}
+
+.leftContainer form {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid green;
+  padding: 30px;
+  width: 260px;
+  background-color: blanchedalmond;
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  padding: 20px;
+}
+
+.rightContainer h1 {
+  margin-bottom: 10px;
+}
+
+.rightContainer .item {
+  border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 15px;
+}
+.item h4 {
+  align-self: flex-end;
+  padding: 4px;
+  cursor: pointer;
+  border: 2px solid;
+}
+
+.rightContainer .item:hover {
+  box-shadow: 10px 15px blanchedalmond;
+}
+
+.detail {
+  display: flex;
+  padding: 0px 25px 25px 10px;
+  justify-content: space-between;
+}
+
+.main h1 {
+  text-align: center;
 }
