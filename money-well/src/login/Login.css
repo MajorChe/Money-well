@@ -24,3 +24,7 @@ form input {
   width: 110px;
   margin-left: 0;
 }
+
+.error {
+  color: red;
+}

@@ -7,7 +7,7 @@ export const useSignup = () => {
   const [isPending, setIsPending] = useState(false);
   const [isCancelled, setIsCancelled] = useState(false);
   const { dispatch } = useAuthContext();
-  const signup = async (email, password) => {
+  const signup = async (email, password, name) => {
     setError(null);
     setIsPending(true);
 
@@ -21,6 +21,8 @@ export const useSignup = () => {
       if (!response) {
         throw new Error("Could not sign up!!");
       }
+
+      await response.user.updateProfile({ displayName: name });
 
       // dispatch login action type
       dispatch({ type: "LOGIN", payload: response.user });
@@ -39,7 +41,7 @@ export const useSignup = () => {
   };
   //used as a clean up function to avoid side effects for state unmounting
   useEffect(() => {
-    return setIsCancelled(true);
+    return () => setIsCancelled(true);
   }, []);
   return { signup, error, isPending };
 };

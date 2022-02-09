@@ -22,3 +22,8 @@ nav a {
 .btn-1 {
   margin-left: 20px;
 }
+
+.logged-nav {
+  display: flex;
+  align-items: center;
+}

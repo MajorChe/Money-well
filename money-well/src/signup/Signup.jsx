@@ -6,6 +6,7 @@ import styles from "./Signup.module.css";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passError, setPassError] = useState(false);
@@ -21,10 +22,7 @@ const Signup = () => {
       setPassError(true);
     } else {
       setPassError(false);
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      signup(email, password);
+      signup(email, password,name);
     }
   };
   return (
@@ -51,6 +49,13 @@ const Signup = () => {
           value={email}
           required
           onClick={() => setPassError(false)}
+        />
+        <label>Name:</label>
+        <input
+          type={"text"}
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          required
         />
         <label>Password:</label>
         <input
