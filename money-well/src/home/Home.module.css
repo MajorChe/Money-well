@@ -1,4 +1,4 @@
-.main{
+.main {
   color: green;
   width: 100%;
   margin-top: 30px;
@@ -28,22 +28,25 @@
   padding: 20px;
 }
 
-.rightContainer h1 {
-  margin-bottom: 10px;
-}
-
-.rightContainer .item {
+.item {
   border: 2px solid green;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 15px;
+  font-size: 1.1rem;
 }
-.item h4 {
+
+.item .date {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.item .delete {
   align-self: flex-end;
-  padding: 4px;
   cursor: pointer;
-  border: 2px solid;
+  color: orangered;
 }
 
 .rightContainer .item:hover {
@@ -52,10 +55,14 @@
 
 .detail {
   display: flex;
-  padding: 0px 25px 25px 10px;
+  padding: 0px 20px 15px 20px;
   justify-content: space-between;
 }
 
 .main h1 {
   text-align: center;
+}
+
+.error {
+  color: red;
 }

@@ -3,6 +3,8 @@ import { useFireStore } from "../hooks/useFireStore";
 import styles from "./Home.module.css";
 import { useAuthContext } from "../hooks/useAuthContext";
 import moment from "moment";
+import TransactionList from "./TransactionList";
+import { useCollection } from "../hooks/useCollection";
 
 const Home = () => {
   const [name, setName] = useState("");
@@ -10,6 +12,8 @@ const Home = () => {
   const [date, setDate] = useState("");
   const { user } = useAuthContext();
   const { addDocument, response } = useFireStore("transactions");
+  const {document, error} = useCollection("transactions");
+  console.log(document)
 
   const current_date = moment(new Date()).format("YYYY-MM-DD");
 
@@ -28,7 +32,7 @@ const Home = () => {
       uid: user.uid,
       name,
       amount,
-      date,
+      date: moment(date).format("DD MMM YYYY"),
     });
   };
 
@@ -66,20 +70,8 @@ const Home = () => {
         </div>
         <div className={styles.rightContainer}>
           <h1>Transactions</h1>
-          <div className={styles.item}>
-            <h4 onClick={() => console.log("hello")}>x</h4>
-            <div className={styles.detail}>
-              <h2>Groceries</h2>
-              <h2>$150</h2>
-            </div>
-          </div>
-          {/* <div className={styles.item}>
-            <h4 onClick={() => console.log("hello")}>x</h4>
-            <div className={styles.detail}>
-            <h2>Clothes</h2>
-            <h2>$250</h2>
-            </div>
-          </div> */}
+          {error && <p className={styles.error}>{error}</p>}
+          {document && <TransactionList list={document}/>}
         </div>
       </div>
     </>
