@@ -59,7 +59,7 @@ const Home = () => {
               value={amount}
               required
             />
-            <label>Date: </label>
+            <label>Date of transaction: </label>
             <input
               type="date"
               onChange={(e) => setDate(e.target.value)}

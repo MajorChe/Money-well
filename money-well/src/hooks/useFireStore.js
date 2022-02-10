@@ -1,4 +1,4 @@
-import { projectMoneyWell } from "../firebase/Config";
+import { projectMoneyWell,timestamp } from "../firebase/Config";
 import { useState, useEffect, useReducer } from "react";
 
 let initialState = {
@@ -41,7 +41,8 @@ export const useFireStore = (collection) => {
   const addDocument = async (doc) => {
     dispatch({ type: "IS_PENDING" });
     try {
-      const addedDocument = await ref.add(doc);
+      const createdAt = timestamp.fromDate(new Date())
+      const addedDocument = await ref.add({...doc, createdAt});
       dispatchIfNotCancelled({ type: "ADDED_DOCUMENT", payload: addedDocument });
     } catch (err){
       dispatchIfNotCancelled({type: "ERROR", payload: err.message})

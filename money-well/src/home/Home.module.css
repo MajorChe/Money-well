@@ -1,7 +1,7 @@
 .main {
   color: green;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -9,7 +9,7 @@
 }
 
 .leftContainer {
-  margin-top: 60px;
+  margin-top: 100px;
 }
 
 .leftContainer form {
@@ -28,6 +28,10 @@
   padding: 20px;
 }
 
+.rightContainer h1{
+  margin-bottom: 20px;
+}
+
 .item {
   border: 2px solid green;
   display: flex;
@@ -37,10 +41,10 @@
   font-size: 1rem;
 }
 
-.item .date {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 5px;
+.date {
+  color:black;
+  font-size: large;
+  text-align: center;
 }
 
 .dateInput {
@@ -51,6 +55,11 @@
   align-self: flex-end;
   cursor: pointer;
   color: orangered;
+}
+
+.item .created {
+  align-self: flex-end;
+  color: grey;
 }
 
 .rightContainer .item:hover {

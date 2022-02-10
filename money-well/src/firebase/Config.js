@@ -18,4 +18,6 @@ firebase.initializeApp(firebaseConfig);
 const projectMoneyWell = firebase.firestore();
 const projectMoneyWellAuth = firebase.auth();
 
-export { projectMoneyWell, projectMoneyWellAuth };
+const timestamp = firebase.firestore.Timestamp
+
+export { projectMoneyWell, projectMoneyWellAuth,timestamp };
