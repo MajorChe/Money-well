@@ -12,8 +12,11 @@ const Home = () => {
   const [date, setDate] = useState("");
   const { user } = useAuthContext();
   const { addDocument, response } = useFireStore("transactions");
-  const {document, error} = useCollection("transactions");
-  console.log(document)
+  const {documents, error} = useCollection("transactions",[
+    "uid","==",user.uid
+  ],["date","desc"]);
+
+  console.log("documents",documents)
 
   const current_date = moment(new Date()).format("YYYY-MM-DD");
 
@@ -22,7 +25,6 @@ const Home = () => {
       setName("");
       setAmount("");
       setDate("");
-      console.log("hello");
     }
   }, [response.success]);
 
@@ -32,7 +34,7 @@ const Home = () => {
       uid: user.uid,
       name,
       amount,
-      date: moment(date).format("DD MMM YYYY"),
+      date,
     });
   };
 
@@ -71,7 +73,7 @@ const Home = () => {
         <div className={styles.rightContainer}>
           <h1>Transactions</h1>
           {error && <p className={styles.error}>{error}</p>}
-          {document && <TransactionList list={document}/>}
+          {documents && <TransactionList list={documents}/>}
         </div>
       </div>
     </>

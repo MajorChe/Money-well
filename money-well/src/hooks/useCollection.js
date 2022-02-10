@@ -1,12 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { projectMoneyWell } from "../firebase/Config";
 
-export const useCollection = (collection) => {
-  const [document, setDocument] = useState(null);
+export const useCollection = (collection, _query,_orderBy) => {
+  const [documents, setDocuments] = useState(null);
   const [error, setError] = useState(null);
+
+  //if we don't use a ref: infinite loop in useEffect happens
+  // _query is an array and it is different on every call. 
+  // This happens for non primitive data types such as arrays, objects,function
+
+  const query = useRef(_query).current;
+  const orderBy = useRef(_orderBy).current;
 
   useEffect(() => {
     let ref = projectMoneyWell.collection(collection);
+
+    if (query) {
+      ref = ref.where(...query)
+    }
+
+    if (orderBy) {
+      ref = ref.orderBy(...orderBy)
+    }
+
     const unsubscribe = ref.onSnapshot(
       (snapshot) => {
         const results = [];
@@ -14,7 +30,7 @@ export const useCollection = (collection) => {
           results.push({ ...doc.data(), id: doc.id });
         });
 
-        setDocument(results);
+        setDocuments(results);
         setError(null);
       },
       (err) => {
@@ -25,7 +41,7 @@ export const useCollection = (collection) => {
 
     //unsubscribe on mount
     return () => unsubscribe();
-  }, [collection]);
+  }, [collection,query,orderBy]);
 
-  return { document, error };
+  return { documents, error };
 };
