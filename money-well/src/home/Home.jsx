@@ -16,7 +16,6 @@ const Home = () => {
     "uid","==",user.uid
   ],["date","desc"]);
 
-  console.log("documents",documents)
 
   const current_date = moment(new Date()).format("YYYY-MM-DD");
 

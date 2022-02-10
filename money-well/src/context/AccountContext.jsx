@@ -29,7 +29,6 @@ export const AccountContextProvider = ({ children }) => {
     });
   }, []);
 
-  console.log("account context state", state);
   return (
     <AccountContext.Provider value={{ ...state, dispatch }}>
       {children}
