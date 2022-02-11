@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <h1><Link to="/">MoneyWell</Link></h1>
+        <h1><Link to="/">MoneyWell</Link> - Your personal wallet</h1>
         <div className="right-nav">
         {!user && (
           <>

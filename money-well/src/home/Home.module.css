@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 20px;
+  min-height: 100%;
 }
 
 .leftContainer {
@@ -81,4 +82,19 @@
 
 .error {
   color: red;
+}
+
+.footer {
+  display: flex;
+  flex-direction:row ;
+  margin-top: 50px;
+  width: 100%;
+  flex: 1;
+  gap: 20px;
+  padding: 2rem 0;
+  background-color: blanchedalmond;
+  border-top: 1px solid #eaeaea;
+  font-size: medium;
+  justify-content: center;
+  align-items: center;
 }

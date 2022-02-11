@@ -42,7 +42,7 @@ const Home = () => {
       <div className={styles.main}>
         <div className={styles.leftContainer}>
           <form onSubmit={handleSubmit}>
-            <h2>Add a Transaction </h2>
+            <h2>Add a Transaction Record</h2>
             <br></br>
             <label>Transaction name: </label>
             <input
@@ -75,6 +75,12 @@ const Home = () => {
           {documents && <TransactionList list={documents}/>}
         </div>
       </div>
+      <footer className={styles.footer}>
+        <p>
+          Made with React & Firebase by - <u>Charit</u>
+        </p>
+        <p>S-Code: <a href="https://github.com/MajorChe/Money-well/tree/main/money-well/src">*%*</a></p>
+      </footer>
     </>
   );
 };
