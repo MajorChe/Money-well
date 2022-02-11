@@ -8,3 +8,12 @@
 .error {
   color: red;
 }
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid green;
+  width: 280px;
+  margin-top: 20px;
+  padding: 30px;
+}

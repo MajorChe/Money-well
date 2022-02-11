@@ -1,6 +1,4 @@
-import React, { useContext, useState } from "react";
-import { AccountContext, AccountContextProvider, authReducer } from "../context/AccountContext";
-import { useAuthContext } from "../hooks/useAuthContext";
+import React, { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
 import styles from "./Signup.module.css";
 
@@ -11,24 +9,21 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passError, setPassError] = useState(false);
 
-  // To get the logged user object
-  // const {user} = useAuthContext(authReducer);
-
   const { signup, error, isPending } = useSignup();
-  
+
   const handleSignup = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       setPassError(true);
     } else {
       setPassError(false);
-      signup(email, password,name);
+      signup(email, password, name);
     }
   };
   return (
     <div className={styles.main}>
-      <h1>Sign up</h1>
-      <form className="login-form" onSubmit={handleSignup}>
+      <form className={styles.loginForm} onSubmit={handleSignup}>
+        <h1>Sign up</h1>
         {error && (
           <p className={styles.error}>
             {error}
