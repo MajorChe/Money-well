@@ -5,6 +5,9 @@ body {
   font-family: Poppins, sans-serif;
   margin: 0;
   font-size: 1.1em;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 ul, li, p, h1, h2, h3, h4 {
   margin: 0;

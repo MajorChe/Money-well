@@ -38,7 +38,6 @@ const Home = () => {
   };
 
   return (
-    <>
       <div className={styles.main}>
         <div className={styles.leftContainer}>
           <form onSubmit={handleSubmit}>
@@ -75,13 +74,6 @@ const Home = () => {
           {documents && <TransactionList list={documents}/>}
         </div>
       </div>
-      <footer className={styles.footer}>
-        <p>
-          Made with React & Firebase by - <u>Charit</u>
-        </p>
-        <p>S-Code: <a href="https://github.com/MajorChe/Money-well/tree/main/money-well/src">*%*</a></p>
-      </footer>
-    </>
   );
 };
 
