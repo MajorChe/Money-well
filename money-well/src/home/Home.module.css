@@ -104,4 +104,18 @@
   .leftContainer {
     margin-top: 30px;
   }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    font-size: small;
+  }
+  .item .created {
+    align-self: flex-end;
+    color: grey;
+    font-size: small;
+  }
+  .dateInput {
+    width: 250px;
+  }
 }
